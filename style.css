@@ -12,10 +12,31 @@ body {
     border-radius: 5px;
 }
 
+.main-title {
+    font-size: 3em;
+    background: linear-gradient(to right, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
 button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#suggestionBtn {
+    background-color: #ff8a00;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#suggestionBtn:hover {
+    background-color: #e52e71;
 }
 
 #foodSuggestion {
@@ -30,6 +51,11 @@ button {
     right: 20px;
 }
 
+#theme-toggle {
+    background-color: #ccc;
+    color: #333;
+}
+
 /* Dark mode */
 body.dark-mode {
     background-color: #333;
@@ -38,4 +64,9 @@ body.dark-mode {
 
 body.dark-mode .container {
     border-color: #555;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #555;
+    color: #fff;
 }
