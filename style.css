@@ -1,12 +1,15 @@
 body {
     font-family: sans-serif;
     text-align: center;
-    margin-top: 50px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
@@ -17,6 +20,22 @@ button {
 
 #foodSuggestion {
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
+}
+
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .container {
+    border-color: #555;
 }
