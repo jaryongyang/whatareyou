@@ -17,8 +17,25 @@ const menu = [
 ];
 
 suggestionBtn.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * menu.length);
-    foodSuggestion.textContent = menu[randomIndex];
+    suggestionBtn.disabled = true;
+    foodSuggestion.textContent = "";
+
+    let spinCount = 0;
+    const maxSpins = 30; 
+    const spinSpeed = 75; 
+
+    const spinInterval = setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * menu.length);
+        foodSuggestion.textContent = menu[randomIndex];
+        spinCount++;
+
+        if (spinCount >= maxSpins) {
+            clearInterval(spinInterval);
+            const finalRandomIndex = Math.floor(Math.random() * menu.length);
+            foodSuggestion.textContent = menu[finalRandomIndex];
+            suggestionBtn.disabled = false;
+        }
+    }, spinSpeed);
 });
 
 // 테마 전환 버튼 클릭 이벤트
