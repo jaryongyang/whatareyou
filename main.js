@@ -1,5 +1,8 @@
 const suggestionBtn = document.getElementById("suggestionBtn");
 const foodSuggestion = document.getElementById("foodSuggestion");
+const actionButtons = document.getElementById("action-buttons");
+const cookBtn = document.getElementById("cookBtn");
+const orderBtn = document.getElementById("orderBtn");
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
@@ -18,24 +21,43 @@ const menu = [
 
 suggestionBtn.addEventListener("click", () => {
     suggestionBtn.disabled = true;
+    actionButtons.style.display = "none";
     foodSuggestion.textContent = "";
 
     let spinCount = 0;
-    const maxSpins = 30; 
-    const spinSpeed = 75; 
+    const maxSpins = 50; 
+    let spinSpeed = 50;
 
-    const spinInterval = setInterval(() => {
+    const spin = () => {
         const randomIndex = Math.floor(Math.random() * menu.length);
         foodSuggestion.textContent = menu[randomIndex];
         spinCount++;
 
-        if (spinCount >= maxSpins) {
-            clearInterval(spinInterval);
+        if (spinCount < maxSpins) {
+            if(spinCount > maxSpins*0.8){
+                spinSpeed = 200;
+            } else if(spinCount > maxSpins*0.6){
+                spinSpeed = 100;
+            }
+            setTimeout(spin, spinSpeed);
+        } else {
             const finalRandomIndex = Math.floor(Math.random() * menu.length);
             foodSuggestion.textContent = menu[finalRandomIndex];
             suggestionBtn.disabled = false;
+            actionButtons.style.display = "block";
         }
-    }, spinSpeed);
+    }
+    spin();
+});
+
+cookBtn.addEventListener("click", () => {
+    const selectedFood = foodSuggestion.textContent;
+    window.open(`https://www.youtube.com/results?search_query=${selectedFood} 레시피`, "_blank");
+});
+
+orderBtn.addEventListener("click", () => {
+    const selectedFood = foodSuggestion.textContent;
+    window.open(`https://map.naver.com/p/search/${selectedFood}`, "_blank");
 });
 
 // 테마 전환 버튼 클릭 이벤트
