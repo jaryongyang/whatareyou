@@ -1,1 +1,22 @@
-/* Add styles here */
+body {
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#foodSuggestion {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
