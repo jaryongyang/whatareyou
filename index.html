@@ -13,7 +13,7 @@
     <div class="container">
         <h1 class="main-title">오늘 뭐 먹지? 🍽️</h1>
         <div id="category-buttons">
-            <button class="category-btn active" data-category="all">아무거나</button>
+            <button class="category-btn" data-category="all">아무거나</button>
             <button class="category-btn" data-category="korean">한식</button>
             <button class="category-btn" data-category="chinese">중식</button>
             <button class="category-btn" data-category="japanese">일식</button>
@@ -26,6 +26,20 @@
             <button id="orderBtn">주문하기</button>
         </div>
     </div>
+
+    <div class="menu-management">
+        <h2>메뉴 관리</h2>
+        <input type="text" id="menu-item-input" placeholder="음식 이름">
+        <select id="menu-category-select">
+            <option value="korean">한식</option>
+            <option value="chinese">중식</option>
+            <option value="japanese">일식</option>
+            <option value="western">양식</option>
+        </select>
+        <button id="add-menu-btn">추가</button>
+        <button id="remove-menu-btn">삭제</button>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>

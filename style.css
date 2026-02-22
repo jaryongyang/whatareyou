@@ -3,41 +3,63 @@ body {
     background-color: #f4f4f4;
     color: #333;
     text-align: center;
-    padding: 50px;
     transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 .container {
     max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .main-title {
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 #category-buttons {
-    margin-bottom: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .category-btn {
-    padding: 10px 20px;
+    width: 80px;
+    height: 80px;
     font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.category-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .category-btn.active {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px #007bff;
 }
+
+.category-btn[data-category="all"] { background-color: #8E44AD; }
+.category-btn[data-category="korean"] { background-color: #C0392B; }
+.category-btn[data-category="chinese"] { background-color: #D35400; }
+.category-btn[data-category="japanese"] { background-color: #2980B9; }
+.category-btn[data-category="western"] { background-color: #27AE60; }
 
 #suggestionBtn {
     padding: 15px 30px;
@@ -51,20 +73,14 @@ body {
     transition: background-color 0.3s;
 }
 
-#suggestionBtn:disabled {
+#suggestionBtn:disabled, #add-menu-btn:disabled, #remove-menu-btn:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
 }
 
-#suggestionBtn:hover:not(:disabled) {
-    background-color: #218838;
-}
+#suggestionBtn:hover:not(:disabled) { background-color: #218838; }
 
-#foodSuggestion {
-    font-size: 1.5em;
-    font-weight: bold;
-    min-height: 50px;
-}
+#foodSuggestion { font-size: 1.5em; font-weight: bold; min-height: 50px; }
 
 #action-buttons button {
     padding: 10px 20px;
@@ -78,17 +94,9 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-#action-buttons button:hover {
-    background-color: #f0f0f0;
-}
+#action-buttons button:hover { background-color: #f0f0f0; }
 
-
-.theme-switch-wrapper {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
+.theme-switch-wrapper { position: absolute; top: 20px; right: 20px; }
 #theme-toggle {
     padding: 8px 12px;
     font-size: 0.9em;
@@ -98,36 +106,45 @@ body {
     cursor: pointer;
 }
 
-/* 다크 모드 스타일 */
+.menu-management {
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 2px solid #ddd;
+    width: 100%;
+    max-width: 600px;
+}
+
+.menu-management h2 { margin-bottom: 20px; }
+.menu-management input, .menu-management select, .menu-management button {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 5px;
+}
+
+.menu-management button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+.menu-management button:hover { background-color: #0056b3; }
+
+
 body.dark-mode {
     background-color: #121212;
     color: #f4f4f4;
 }
 
-body.dark-mode .category-btn {
-    background-color: #333;
-    color: #f4f4f4;
-    border-color: #555;
-}
-
 body.dark-mode .category-btn.active {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
+     box-shadow: 0 0 0 4px #121212, 0 0 0 8px #007bff;
 }
 
-body.dark-mode #suggestionBtn {
-    background-color: #28a745;
-}
-
-body.dark-mode #action-buttons button {
+body.dark-mode #action-buttons button, body.dark-mode #theme-toggle, 
+body.dark-mode .menu-management input, body.dark-mode .menu-management select {
     background-color: #333;
     color: #f4f4f4;
     border-color: #555;
 }
 
-body.dark-mode #theme-toggle {
-    background-color: #333;
-    color: #f4f4f4;
-    border-color: #555;
-}
+body.dark-mode .menu-management { border-top-color: #555; }
